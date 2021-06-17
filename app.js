@@ -13,9 +13,22 @@ library.push(new Book('Microverse', 'RoR', 42, true));
 library.push(new Book('Zoom', 'Meetings', 155, false));
 library.push(new Book('Clockify', 'Time', 23, true));
 
-const addBook = () => {
 
+// Add Book
+const addBook = (e) => {
+    e.preventDefault()
+    let author = document.getElementById('author').value
+    let title = document.getElementById('title').value
+    let nop = document.getElementById('nop').value
+    let read = document.getElementById('read')
+    let data = read.options[read.selectedIndex].text
+    book = new Book(author, title, nop, data)
+    createCard(book)
+    library.push(book);
 };
+
+const form = document.getElementById('add-book')
+form.addEventListener('submit', addBook)
 
 // UI Render
 
@@ -78,7 +91,8 @@ renderBooks(library);
 // Modal 
 let modalButton = document.getElementById("modal-btn");
 let modal = document.getElementById("modal");
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
+
 
 modalButton.onclick = function () {
     modal.style.display = "block";
