@@ -8,6 +8,10 @@ function Book(author, title, nop, read) {
     this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+    this.read = this.read === 'Yes' ? 'No' : 'Yes'
+}
+
 library.push(new Book('The Odin Project', 'JavaScript', 101, 'No'));
 library.push(new Book('Microverse', 'RoR', 42, 'Yes'));
 library.push(new Book('Zoom', 'Meetings', 155, 'No'));
@@ -37,9 +41,9 @@ const markRead = (e) => {
     let element = e.target.parentElement
     let li = element.querySelectorAll('li')
     let i = library.findIndex(book => li[0].innerHTML.includes(book.author) && li[1].innerHTML.includes(book.title))
-    library[i].read = 'Yes'
-    li[3].innerHTML = 'Read: Yes'
-    element.querySelectorAll('button')[1].remove()
+    library[i].toggleRead()
+    li[3].innerHTML = `Read: ${library[i].read}`
+    element.querySelectorAll('button')[1].innerHTML = library[i].read === 'Yes' ? 'Mard as unread' : 'Mark as read';
 
 }
 
@@ -85,13 +89,12 @@ const createCard = (book) => {
     ul.appendChild(btn);
 
     // read button
-    if (book.read === 'No') {
-        btn = document.createElement('button');
-        btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
-        btn.innerHTML = 'Mark as Read';
-        btn.addEventListener('click', markRead);
-        ul.appendChild(btn);
-    }
+    btn = document.createElement('button');
+    btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
+    btn.innerHTML = read === 'Yes' ? 'Mard as unread' : 'Mark as read';
+    btn.addEventListener('click', markRead);
+    ul.appendChild(btn);
+
 
     booksDiv.appendChild(ul);
 };
