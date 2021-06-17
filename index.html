@@ -31,11 +31,14 @@
             <input type="text" id="title" name="Title" placeholder="Title" class="p-2 rounded mt-1">
 
             <label for="nop" class="text-lg mt-5">Number of Pages:</label>
-            <input type="text" id="nop" name="nop" placeholder="Number of Pages" class="p-2 rounded mt-1">
+            <input type="number" id="nop" name="nop" placeholder="Number of Pages" class="p-2 rounded mt-1">
 
             <label for="read" class="text-lg mt-5">Did You Read it?</label>
-            <input type="text" id="read" name="read" placeholder="Did You Read it?" class="p-2 rounded mt-1">
-            
+            <select name="read" id="read" class="p-2 ">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+
             <input type="submit" value="Submit" class="mt-5 p-2 bg-blue-700 text-white">
         </form>
     </section>
