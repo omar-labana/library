@@ -1,4 +1,4 @@
-const library = [];
+let library = [];
 const booksDiv = document.getElementById('books');
 
 function Book(author, title, nop, read) {
@@ -8,10 +8,10 @@ function Book(author, title, nop, read) {
     this.read = read;
 }
 
-library.push(new Book('The Odin Project', 'JavaScript', 101, false));
-library.push(new Book('Microverse', 'RoR', 42, true));
-library.push(new Book('Zoom', 'Meetings', 155, false));
-library.push(new Book('Clockify', 'Time', 23, true));
+library.push(new Book('The Odin Project', 'JavaScript', 101, 'No'));
+library.push(new Book('Microverse', 'RoR', 42, 'Yes'));
+library.push(new Book('Zoom', 'Meetings', 155, 'No'));
+library.push(new Book('Clockify', 'Time', 23, 'Yes'));
 
 
 // Add Book
@@ -30,6 +30,18 @@ const addBook = (e) => {
 const form = document.getElementById('add-book')
 form.addEventListener('submit', addBook)
 
+
+const markRead = () => {
+
+}
+
+const removeBook = (e) => {
+    let element = e.target.parentElement
+    let li = element.querySelectorAll('li')
+    library = library.filter(book => !li[0].innerHTML.includes(book.author) && !li[1].innerHTML.includes(book.title))
+    console.log();
+    e.target.parentElement.remove()
+}
 // UI Render
 
 const createCard = (book) => {
@@ -61,13 +73,11 @@ const createCard = (book) => {
     let btn = document.createElement('button');
     btn.innerHTML = 'Remove';
     btn.className += 'bg-red-700 p-2 border rounded text-white text-sm';
-    btn.addEventListener('click', () => {
-        console.log('Removed');
-    });
+    btn.addEventListener('click', removeBook);
     ul.appendChild(btn);
 
     // read button
-    if (!book.read) {
+    if (book.read != 'No') {
         btn = document.createElement('button');
         btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
         btn.innerHTML = 'Mark as Read';
@@ -107,3 +117,4 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
