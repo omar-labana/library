@@ -25,6 +25,8 @@ const addBook = (e) => {
     book = new Book(author, title, nop, data)
     createCard(book)
     library.push(book);
+    modal.style.display = "none";
+
 };
 
 const form = document.getElementById('add-book')
