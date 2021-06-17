@@ -2,10 +2,10 @@ const library = [];
 const booksDiv = document.getElementById('books');
 
 function Book(author, title, nop, read) {
-  this.author = author;
-  this.title = title;
-  this.nop = nop;
-  this.read = read;
+    this.author = author;
+    this.title = title;
+    this.nop = nop;
+    this.read = read;
 }
 
 library.push(new Book('The Odin Project', 'JavaScript', 101, false));
@@ -20,57 +20,76 @@ const addBook = () => {
 // UI Render
 
 const createCard = (book) => {
-  // ul
-  const ul = document.createElement('ul');
-  ul.className += ' border-2 p-6 rounded-lg';
+    // ul
+    const ul = document.createElement('ul');
+    ul.className += ' border-2 p-6 rounded-lg';
 
-  // Author li
-  const author = document.createElement('li');
-  author.innerHTML = `Author: ${book.author}`;
-  ul.appendChild(author);
+    // Author li
+    const author = document.createElement('li');
+    author.innerHTML = `Author: ${book.author}`;
+    ul.appendChild(author);
 
-  // Title li
-  const title = document.createElement('li');
-  title.innerHTML = `Title: ${book.title}`;
-  ul.appendChild(title);
+    // Title li
+    const title = document.createElement('li');
+    title.innerHTML = `Title: ${book.title}`;
+    ul.appendChild(title);
 
-  // nop li
-  const nop = document.createElement('li');
-  nop.innerHTML = `Title: ${book.nop}`;
-  ul.appendChild(nop);
+    // nop li
+    const nop = document.createElement('li');
+    nop.innerHTML = `Title: ${book.nop}`;
+    ul.appendChild(nop);
 
-  // read li
-  const read = document.createElement('li');
-  read.innerHTML = `Read: ${book.read ? 'Yes' : 'No'}`;
-  ul.appendChild(read);
+    // read li
+    const read = document.createElement('li');
+    read.innerHTML = `Read: ${book.read ? 'Yes' : 'No'}`;
+    ul.appendChild(read);
 
-  // remove btn
-  let btn = document.createElement('button');
-  btn.innerHTML = 'Remove';
-  btn.className += 'bg-red-700 p-2 border rounded text-white text-sm';
-  btn.addEventListener('click', () => {
-    console.log('Removed');
-  });
-  ul.appendChild(btn);
-
-  // read button
-  if (!book.read) {
-    btn = document.createElement('button');
-    btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
-    btn.innerHTML = 'Mark as Read';
+    // remove button
+    let btn = document.createElement('button');
+    btn.innerHTML = 'Remove';
+    btn.className += 'bg-red-700 p-2 border rounded text-white text-sm';
     btn.addEventListener('click', () => {
-      console.log('Marked');
+        console.log('Removed');
     });
     ul.appendChild(btn);
-  }
 
-  booksDiv.appendChild(ul);
+    // read button
+    if (!book.read) {
+        btn = document.createElement('button');
+        btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
+        btn.innerHTML = 'Mark as Read';
+        btn.addEventListener('click', () => {
+            console.log('Marked');
+        });
+        ul.appendChild(btn);
+    }
+
+    booksDiv.appendChild(ul);
 };
 
 const renderBooks = (books) => {
-  books.forEach((book) => {
-    createCard(book);
-  });
+    books.forEach((book) => {
+        createCard(book);
+    });
 };
 
 renderBooks(library);
+
+// Modal 
+let modalButton = document.getElementById("modal-btn");
+let modal = document.getElementById("modal");
+var span = document.getElementsByClassName("close")[0];
+
+modalButton.onclick = function () {
+    modal.style.display = "block";
+}
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
