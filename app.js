@@ -31,7 +31,13 @@ const form = document.getElementById('add-book')
 form.addEventListener('submit', addBook)
 
 
-const markRead = () => {
+const markRead = (e) => {
+    let element = e.target.parentElement
+    let li = element.querySelectorAll('li')
+    let i = library.findIndex(book => li[0].innerHTML.includes(book.author) && li[1].innerHTML.includes(book.title))
+    library[i].read = 'Yes'
+    li[3].innerHTML = 'Read: Yes'
+    element.querySelectorAll('button')[1].remove()
 
 }
 
@@ -66,7 +72,7 @@ const createCard = (book) => {
 
     // read li
     const read = document.createElement('li');
-    read.innerHTML = `Read: ${book.read ? 'Yes' : 'No'}`;
+    read.innerHTML = `Read: ${book.read}`;
     ul.appendChild(read);
 
     // remove button
@@ -77,13 +83,11 @@ const createCard = (book) => {
     ul.appendChild(btn);
 
     // read button
-    if (book.read != 'No') {
+    if (book.read === 'No') {
         btn = document.createElement('button');
         btn.className += 'bg-blue-700 p-2 border rounded text-white text-sm';
         btn.innerHTML = 'Mark as Read';
-        btn.addEventListener('click', () => {
-            console.log('Marked');
-        });
+        btn.addEventListener('click', markRead);
         ul.appendChild(btn);
     }
 
