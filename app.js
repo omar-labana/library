@@ -8,7 +8,7 @@ function Book(author, title, nop, read) {
   this.read = read;
 }
 
-Book.prototype.toggleRead = function toggleRead() {
+Book.prototype.toggleRead = function () {
   this.read = this.read === 'Yes' ? 'No' : 'Yes';
 };
 
