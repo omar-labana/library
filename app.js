@@ -57,9 +57,10 @@ const removeBook = (e) => {
   const li = element.querySelectorAll('li');
   library = library.filter(
     (book) => {
+      console.log(book);
       const isAuthor = li[0].innerHTML.includes(book.author);
       const isTitle = li[1].innerHTML.includes(book.title);
-      return isAuthor && isTitle;
+      return !isAuthor && !isTitle;
     },
   );
   e.target.parentElement.remove();
