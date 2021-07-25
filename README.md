@@ -23,7 +23,7 @@ This is a Simple library  build with vanilla javascipt.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/omar-labana/portfolio.git
+   git clone https://github.com/omar-labana/library.git
    ```
 2. Install NPM packages
    ```sh
