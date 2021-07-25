@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Book Library</title>
+</head>
+
+<body>
+    <main class="container mx-auto my-3 md:px-10">
+        <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-semibold">Book Library</h1>
+            <button class="bg-blue-500 p-3 text-white" id="modal-btn">Add Book</button>
+        </div>
+        <div class="mx-6 mt-10 text-lg flex flex-wrap gap-3" id="books">
+        </div>
+    </main>
+    <section id="modal" class="hidden fixed z-10 pt-20 left-0 top-0 w-full h-full bg-blue-100">
+        <div class="mx-6 md:mx-16 flex justify-between items-center text-2xl ">
+            <p>Add a book to the library</p>
+            <span class="close">&times;</span>
+        </div>
+        <form action="#" class="flex flex-col content-center max-w-md mx-auto" id="add-book">
+            <label for="Author" class="text-lg mt-5">Author:</label>
+            <input type="text" id="author" name="Author" placeholder="Author" class="p-2 rounded mt-1" required>
+
+            <label for="title" class="text-lg mt-5">Title:</label>
+            <input type="text" id="title" name="Title" placeholder="Title" class="p-2 rounded mt-1" required>
+
+            <label for="nop" class="text-lg mt-5">Number of Pages:</label>
+            <input type="number" id="nop" name="nop" placeholder="Number of Pages" class="p-2 rounded mt-1" required>
+
+            <label for="read" class="text-lg mt-5">Did You Read it?</label>
+            <select name="read" id="read" class="p-2 " required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+
+            <input type="submit" value="Submit" class="mt-5 p-2 bg-blue-700 text-white">
+        </form>
+    </section>
+    <script src="app.js"></script>
+</body>
+
+</html>
